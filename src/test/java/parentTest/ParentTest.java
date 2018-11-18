@@ -1,5 +1,6 @@
 package parentTest;
 
+import Pages.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -9,19 +10,22 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class ParentTest {
-        WebDriver webdriver;
+
+        WebDriver webDriver;
+        protected LoginPage loginPage;
+
         @Before
         public void setup(){
                 File file = new File("./src/drivers/chromedriver.exe");
                 System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-                webdriver = new ChromeDriver();
-                webdriver.manage().window().maximize();
-                webdriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+                webDriver = new ChromeDriver();
+                webDriver.manage().window().maximize();
+                webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                loginPage = new LoginPage(webDriver);
         }
         @After
         public void tearDown(){
-                webdriver.quit();
+                webDriver.quit();
         }
 
 }
