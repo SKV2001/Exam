@@ -1,8 +1,12 @@
 package login;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import parentTest.ParentTest;
+
 
 public class SearchTest extends ParentTest {
 
@@ -17,5 +21,6 @@ public class SearchTest extends ParentTest {
     public void validSearch(){
         mainPage.inputValueInSearchField("Судный");
         mainPage.searchButtonClick();
+        mainPage.searchResult();
     }
 }

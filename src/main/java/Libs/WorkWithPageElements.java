@@ -22,6 +22,16 @@ public class WorkWithPageElements {
         }
     }
 
+    public boolean isElementExist(By by){
+        try {
+            return findElementOnPage(by).isDisplayed();
+        } catch (Exception e) {
+            logger.error("Element "+by+" couldn't be found");
+            return false;
+        }
+
+    }
+
 //    public WebElement findElementOnPage(By by){
 //        try {
 //            if (webdriver.findElement(by).isDisplayed()) {
@@ -45,19 +55,17 @@ public class WorkWithPageElements {
     public WebElement findElementOnPage(By by) {
         try {
             return webdriver.findElement(by);
+        } catch (Exception e) { }
+        try {
+            webdriver.switchTo().frame(0);
+            return webdriver.findElement(by);
+        } catch (Exception e) { }
+        try {
+            webdriver.switchTo().defaultContent();
+            return webdriver.findElement(by);
         } catch (Exception e) {
-            try {
-                webdriver.switchTo().frame(0);
-                return webdriver.findElement(by);
-            } catch (Exception e2) {
-                try {
-                    webdriver.switchTo().defaultContent();
-                    return webdriver.findElement(by);
-                } catch (Exception e3) {
-                    logger.error("Element " + by + " couldn't be found");
-                    return null;
-                }
-            }
+            logger.error("Element " + by + " couldn't be found");
+            return null;
         }
     }
 
