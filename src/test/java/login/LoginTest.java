@@ -12,7 +12,6 @@ public class LoginTest extends ParentTest {
     public void validLogin() throws InterruptedException {
         loginPage.openLoginPage();
 //        Thread.sleep(3000);
-  //      loginPage.switchToFrame();
         loginPage.enterLogin("gidonline555");
         loginPage.enterPassword("DuyJXZ3hW7tRvc");
         loginPage.clickVoytiButton();
@@ -23,6 +22,6 @@ public class LoginTest extends ParentTest {
 
     @After
     public void logOut(){
-        profilePage.logOutButtonClick();
+       profilePage.logOutButtonClick();
     }
 }

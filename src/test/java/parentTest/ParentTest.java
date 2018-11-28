@@ -2,6 +2,7 @@ package parentTest;
 
 import Libs.WorkWithPageElements;
 import Pages.LoginPage;
+import Pages.MainPage;
 import Pages.ProfilePage;
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +17,7 @@ public class ParentTest {
         WebDriver webDriver;
         protected LoginPage loginPage;
         protected ProfilePage profilePage;
+        protected MainPage mainPage;
         protected WorkWithPageElements workWithPageElements;
 
         @Before
@@ -27,6 +29,7 @@ public class ParentTest {
                 webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 loginPage = new LoginPage(webDriver);
                 profilePage = new ProfilePage(webDriver);
+                mainPage = new MainPage(webDriver);
         }
         @After
         public void tearDown(){
