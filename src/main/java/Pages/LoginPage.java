@@ -21,6 +21,7 @@ public class LoginPage extends ParentPage {
         try {
             webDriver.get("https://gidonline.in/login/");
             logger.info("Login page was opened");
+            switchToFrame();
         } catch (Exception e) {
             logger.error("Page is not opened " + e);
         }
@@ -39,7 +40,7 @@ public class LoginPage extends ParentPage {
         workWithPageElements.enterTextInToElement(password, inputPassword);
     }
 
-    public void clickVoyti() {
+    public void clickVoytiButton() {
         workWithPageElements.clickOnElement(vhodButton);
     }
 }
