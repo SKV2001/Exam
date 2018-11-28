@@ -1,6 +1,8 @@
 package parentTest;
 
+import Libs.WorkWithPageElements;
 import Pages.LoginPage;
+import Pages.ProfilePage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,8 @@ public class ParentTest {
 
         WebDriver webDriver;
         protected LoginPage loginPage;
+        protected ProfilePage profilePage;
+        protected WorkWithPageElements workWithPageElements;
 
         @Before
         public void setup(){
@@ -22,6 +26,7 @@ public class ParentTest {
                 webDriver.manage().window().maximize();
                 webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 loginPage = new LoginPage(webDriver);
+                profilePage = new ProfilePage(webDriver);
         }
         @After
         public void tearDown(){
