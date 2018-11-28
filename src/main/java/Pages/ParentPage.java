@@ -16,4 +16,7 @@ public abstract class ParentPage {
         workWithPageElements = new WorkWithPageElements(webDriver);
     }
 
+    public String getTitle() {
+        return webDriver.getTitle();
+    }
 }

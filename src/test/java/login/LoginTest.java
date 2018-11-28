@@ -1,5 +1,6 @@
 package login;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.FindBy;
@@ -21,4 +22,8 @@ public class LoginTest extends ParentTest {
 
     }
 
+    @After
+    public void logOut(){
+        profilePage.logOutButtonClick();
+    }
 }
