@@ -22,44 +22,27 @@ public class WorkWithPageElements {
         }
     }
 
-    public boolean isElementExist(By by){
+    public boolean isElementExist(By by) {
         try {
             return findElementOnPage(by).isDisplayed();
         } catch (Exception e) {
-            logger.error("Element "+by+" couldn't be found");
+            logger.error("Element " + by + " couldn't be found");
             return false;
         }
 
     }
 
-//    public WebElement findElementOnPage(By by){
-//        try {
-//            if (webdriver.findElement(by).isDisplayed()) {
-//                return webdriver.findElement(by);
-//            } else {
-//                webdriver.switchTo().frame(0);
-//                if (webdriver.findElement(by).isDisplayed()) {
-//                    return webdriver.findElement(by);
-//                } else {
-//                    webdriver.switchTo().defaultContent();
-//                    return webdriver.findElement(by);
-//                }
-//            }
-//        }catch (Exception e){
-//            logger.error("Element coudn't be found because of " + e);
-//        return null;
-//        }
-//    }
-
 
     public WebElement findElementOnPage(By by) {
         try {
             return webdriver.findElement(by);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
         try {
             webdriver.switchTo().frame(0);
             return webdriver.findElement(by);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
         try {
             webdriver.switchTo().defaultContent();
             return webdriver.findElement(by);
@@ -70,35 +53,48 @@ public class WorkWithPageElements {
     }
 
     public void enterTextInToElement(String text, WebElement element) {
-        if (isElementExist(element)) {
-            element.clear();
-            element.sendKeys(text);
-            logger.info(text + " entered into element " + element);
-        } else {
-            try {
-                webdriver.switchTo().frame(0);
+        try {
+            if (isElementExist(element)) {
                 element.clear();
                 element.sendKeys(text);
                 logger.info(text + " entered into element " + element);
-            } catch (Exception e) {
-                logger.error(element + " was not clicked because of " + e);
+            } else {
+                try {
+                    webdriver.switchTo().frame(0);
+                    element.clear();
+                    element.sendKeys(text);
+                    logger.info(text + " entered into element " + element);
+                } catch (Exception e) {
+                    webdriver.switchTo().defaultContent();
+                    element.clear();
+                    element.sendKeys(text);
+                    logger.info(text + " entered into element " + element);
+                }
             }
+        } catch (Exception e) {
+            logger.error("Text couldn't be entered because of " + e);
         }
     }
 
     public void clickOnElement(WebElement element) {
-        if (isElementExist(element)) {
-            element.click();
-            logger.info(element + " was clicked");
-        } else {
-            try {
-                webdriver.switchTo().frame(0);
+        try {
+            if (isElementExist(element)) {
                 element.click();
                 logger.info(element + " was clicked");
-            } catch (Exception e) {
-                logger.error(element + " was not clicked because of " + e);
+            } else {
+                try {
+                    webdriver.switchTo().frame(0);
+                    element.click();
+                    logger.info(element + " was clicked");
+                } catch (Exception e) {
+                    webdriver.switchTo().defaultContent();
+                    element.click();
+                    logger.info(element + " was clicked");
+                }
             }
+        } catch (Exception e) {
+            logger.error("Element couldn't be clicked because of" + e);
         }
-    }
 
+    }
 }

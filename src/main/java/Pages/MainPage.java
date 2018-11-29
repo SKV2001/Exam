@@ -8,14 +8,18 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends ParentPage {
 
-    @FindBy(xpath = "//input[@id='btnSearch']")
-    private WebElement searchButton;
-
     public MainPage(WebDriver webDriver) {
         super(webDriver);
     }
+
+    @FindBy(xpath = "//input[@id='btnSearch']")
+    WebElement searchButton;
+
     @FindBy(xpath = "//input[@id='s']")
     WebElement searchField;
+
+    @FindBy(xpath = "//a[@id='user_button']")
+    WebElement userButton;
 
 
 
@@ -23,11 +27,24 @@ public class MainPage extends ParentPage {
         workWithPageElements.enterTextInToElement(text, searchField);
     }
 
+    /**
+     * Search button click method
+     */
     public  void searchButtonClick(){
         workWithPageElements.clickOnElement(searchButton);
     }
 
-    public void searchResult() {
-        Assert.assertTrue("Search is not found films", workWithPageElements.isElementExist(By.xpath("//img[@alt='Супермен: Судный день']")));
+    /**
+     * Method verify search results
+     * @param searchResults array of films search return
+     */
+    public void searchResult(String[] searchResults) {
+        for (int i = 0; i < searchResults.length; i++) {
+            Assert.assertTrue("'"+searchResults[i]+"' фильм не найден", workWithPageElements.isElementExist(By.xpath("//img[@alt='"+searchResults[i]+"']")));
+        }
+    }
+
+    public void userButtonClick(){
+        workWithPageElements.clickOnElement(userButton);
     }
 }

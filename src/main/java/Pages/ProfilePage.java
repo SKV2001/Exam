@@ -17,15 +17,14 @@ public class ProfilePage extends ParentPage {
 
 
     public void logOutButtonClick() {
-        workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.xpath("//a[@id='b_logout']")));
-        //workWithPageElements.clickOnElement(webDriver.findElement(By.xpath("//a[@id='b_logout']")));
-        //  workWithPageElements.clickOnElement(logOutButton);
+       // workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.xpath("//a[@id='b_logout']")));
+          workWithPageElements.clickOnElement(logOutButton);
 
     }
 
     public void gidOnlineImageClick(){
-        workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.xpath("//img[@src='/im/gidonline.png']")));
-        //workWithPageElements.clickOnElement(gidOnlineImg);
+        //workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.xpath("//img[@src='/im/gidonline.png']")));
+        workWithPageElements.clickOnElement(gidOnlineImg);
     }
 
 }

@@ -36,20 +36,18 @@ public class LoginPage extends ParentPage {
     }
 
     public void enterLogin(String login) {
-        workWithPageElements.enterTextInToElement(login, workWithPageElements.findElementOnPage(By.xpath("//input[@id='user_login']")));
-       // workWithPageElements.enterTextInToElement(login, webDriver.findElement(By.xpath("//input[@id='user_login']")));
-        //workWithPageElements.enterTextInToElement(login, inputLogin);
+
+        //workWithPageElements.enterTextInToElement(login, workWithPageElements.findElementOnPage(By.xpath("//input[@id='user_login']")));
+        workWithPageElements.enterTextInToElement(login, inputLogin);
     }
 
     public void enterPassword(String password) {
-        workWithPageElements.enterTextInToElement(password, workWithPageElements.findElementOnPage(By.id("user_pass")));
-        //workWithPageElements.enterTextInToElement(password, webDriver.findElement(By.id("user_pass")));
-        //workWithPageElements.enterTextInToElement(password, inputPassword);
+        //workWithPageElements.enterTextInToElement(password, workWithPageElements.findElementOnPage(By.id("user_pass")));
+        workWithPageElements.enterTextInToElement(password, inputPassword);
     }
 
     public void clickVoytiButton() {
-        workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.id("wp-submit")));
-        //workWithPageElements.clickOnElement(webDriver.findElement(By.id("wp-submit")));
-        //workWithPageElements.clickOnElement(vhodButton);
+       // workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.id("wp-submit")));
+        workWithPageElements.clickOnElement(vhodButton);
     }
 }
