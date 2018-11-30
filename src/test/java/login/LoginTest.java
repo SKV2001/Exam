@@ -16,7 +16,7 @@ public class LoginTest extends ParentTest {
         loginPage.enterPassword("DuyJXZ3hW7tRvc");
         loginPage.clickVoytiButton();
 
-        Assert.assertEquals("Вход на ГидОнлайн", profilePage.getTitle());
+        Assert.assertEquals("Login Failed!","Вход на ГидОнлайн", profilePage.getTitle());
 
     }
 

@@ -26,5 +26,4 @@ public class ProfilePage extends ParentPage {
         //workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.xpath("//img[@src='/im/gidonline.png']")));
         workWithPageElements.clickOnElement(gidOnlineImg);
     }
-
 }
