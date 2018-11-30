@@ -10,6 +10,9 @@ public abstract class ParentPage {
     Logger logger = Logger.getLogger(getClass());
     WorkWithPageElements workWithPageElements;
 
+    public static final char defFrame = 0;
+    public static final char frame1 = 1;
+
     public ParentPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);

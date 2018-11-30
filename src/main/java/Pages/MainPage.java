@@ -35,12 +35,13 @@ public class MainPage extends ParentPage {
     }
 
     /**
-     * Method verify search results
-     * @param searchResults array of films search return
+     * Method compare expected search results with actual
+     * @param searchResults  - contains set of search results
      */
-    public void searchResult(String[] searchResults) {
-        for (int i = 0; i < searchResults.length; i++) {
-            Assert.assertTrue("'"+searchResults[i]+"' фильм не найден", workWithPageElements.isElementExist(By.xpath("//img[@alt='"+searchResults[i]+"']")));
+    public void searchResult(String searchResults) {
+        String[] searchResultsArray = searchResults.split(",");
+        for (int i = 0; i < searchResultsArray.length; i++) {
+            Assert.assertTrue("'"+searchResultsArray[i]+"' фильм не найден", workWithPageElements.isElementExist(By.xpath("//img[@alt='"+searchResultsArray[i]+"']")));
         }
     }
 

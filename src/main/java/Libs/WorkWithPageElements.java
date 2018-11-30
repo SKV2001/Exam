@@ -97,4 +97,22 @@ public class WorkWithPageElements {
         }
 
     }
+
+
+    public void clickOnElement(WebElement element, char frame) {
+        try {
+            element.click();
+            logger.info(element + " was clicked");
+        } catch (Exception e) {
+            if (frame == 1) {
+                webdriver.switchTo().frame(0);
+                element.click();
+                logger.info(element + " was clicked");
+            } else {
+                webdriver.switchTo().defaultContent();
+                element.click();
+                logger.info(element + " was clicked");
+            }
+        }
+    }
 }
