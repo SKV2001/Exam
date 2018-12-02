@@ -45,6 +45,11 @@ public class MainPage extends ParentPage {
         }
     }
 
+    public void clickOnFilm(String filmName){
+        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//img[@alt='"+filmName+"']")));
+
+    }
+
     public void userButtonClick(){
         workWithPageElements.clickOnElement(userButton);
     }
