@@ -24,7 +24,7 @@ public class WorkWithPageElements {
 
     public boolean isElementExist(By by) {
         try {
-            return findElementOnPage(by).isDisplayed();
+            return findAndReturnElementOnPage(by).isDisplayed();
         } catch (Exception e) {
             logger.error("Element " + by + " couldn't be found");
             return false;
@@ -33,7 +33,7 @@ public class WorkWithPageElements {
     }
 
 
-    public WebElement findElementOnPage(By by) {
+    public WebElement findAndReturnElementOnPage(By by) {
         try {
             return webdriver.findElement(by);
         } catch (Exception e) {
@@ -96,5 +96,23 @@ public class WorkWithPageElements {
             logger.error("Element couldn't be clicked because of" + e);
         }
 
+    }
+
+
+    public void clickOnElement(WebElement element, char frame) {
+        try {
+            element.click();
+            logger.info(element + " was clicked");
+        } catch (Exception e) {
+            if (frame == 1) {
+                webdriver.switchTo().frame(0);
+                element.click();
+                logger.info(element + " was clicked");
+            } else {
+                webdriver.switchTo().defaultContent();
+                element.click();
+                logger.info(element + " was clicked");
+            }
+        }
     }
 }

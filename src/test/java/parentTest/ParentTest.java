@@ -1,9 +1,7 @@
 package parentTest;
 
 import Libs.WorkWithPageElements;
-import Pages.LoginPage;
-import Pages.MainPage;
-import Pages.ProfilePage;
+import Pages.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,6 +17,8 @@ public class ParentTest {
         protected LoginPage loginPage;
         protected ProfilePage profilePage;
         protected MainPage mainPage;
+        protected FilmPage filmPage;
+        protected FavoritePage favoritePage;
         protected WorkWithPageElements workWithPageElements;
 
         @Before
@@ -31,6 +31,9 @@ public class ParentTest {
                 loginPage = new LoginPage(webDriver);
                 profilePage = new ProfilePage(webDriver);
                 mainPage = new MainPage(webDriver);
+                filmPage = new FilmPage(webDriver);
+                favoritePage = new FavoritePage(webDriver);
+
         }
         @After
         public void tearDown(){
