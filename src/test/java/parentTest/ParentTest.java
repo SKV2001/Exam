@@ -20,6 +20,8 @@ public class ParentTest {
         protected FilmPage filmPage;
         protected FavoritePage favoritePage;
         protected WorkWithPageElements workWithPageElements;
+        protected SearchResultPage searchResultPage;
+        protected FilmsPage filmsPage;
 
         @Before
         public void setup(){
@@ -33,7 +35,8 @@ public class ParentTest {
                 mainPage = new MainPage(webDriver);
                 filmPage = new FilmPage(webDriver);
                 favoritePage = new FavoritePage(webDriver);
-
+                searchResultPage = new SearchResultPage(webDriver);
+                filmsPage = new FilmsPage(webDriver);
         }
         @After
         public void tearDown(){

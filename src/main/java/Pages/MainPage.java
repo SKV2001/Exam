@@ -21,6 +21,8 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = "//a[@id='user_button']")
     WebElement userButton;
 
+    @FindBy(xpath = "//span[@id='fav_button_txt']")
+    WebElement goToFavoriteButton;
 
 
     public void inputValueInSearchField (String text){
@@ -34,20 +36,9 @@ public class MainPage extends ParentPage {
         workWithPageElements.clickOnElement(searchButton);
     }
 
-    /**
-     * Method compare expected search results with actual
-     * @param searchResults  - contains set of search results
-     */
-    public void searchResult(String searchResults) {
-        String[] searchResultsArray = searchResults.split(",");
-        for (int i = 0; i < searchResultsArray.length; i++) {
-            Assert.assertTrue("'"+searchResultsArray[i]+"' фильм не найден", workWithPageElements.isElementExist(By.xpath("//img[@alt='"+searchResultsArray[i]+"']")));
-        }
-    }
 
-    public void clickOnFilm(String filmName){
-        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//img[@alt='"+filmName+"']")));
-
+    public void goToFavoriteButtonClick(){
+        workWithPageElements.clickOnElement(goToFavoriteButton);
     }
 
     public void userButtonClick(){

@@ -9,7 +9,7 @@ public class LoginTest extends ParentTest {
 
 
     @Test
-    public void validLogin() throws InterruptedException {
+    public void validLogin() {
         loginPage.openLoginPage();
 //        Thread.sleep(3000);
         loginPage.enterLogin("gidonline555");
