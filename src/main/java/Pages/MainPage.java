@@ -21,8 +21,16 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = "//a[@id='user_button']")
     WebElement userButton;
 
+    @FindBy(xpath = "//span[@id='fav_button_txt']")
+    WebElement goToFavoriteButton;
 
+    @FindBy(xpath = "//a[text()='Навигатор']")
+    WebElement navigatorButton;
 
+    /**
+     * Method enter text into Search editbox
+     * @param text
+     */
     public void inputValueInSearchField (String text){
         workWithPageElements.enterTextInToElement(text, searchField);
     }
@@ -35,22 +43,21 @@ public class MainPage extends ParentPage {
     }
 
     /**
-     * Method compare expected search results with actual
-     * @param searchResults  - contains set of search results
+     * Method clicks button which to Favourite page
      */
-    public void searchResult(String searchResults) {
-        String[] searchResultsArray = searchResults.split(",");
-        for (int i = 0; i < searchResultsArray.length; i++) {
-            Assert.assertTrue("'"+searchResultsArray[i]+"' фильм не найден", workWithPageElements.isElementExist(By.xpath("//img[@alt='"+searchResultsArray[i]+"']")));
-        }
+    public void goToFavoriteButtonClick(){
+        workWithPageElements.clickOnElement(goToFavoriteButton);
     }
 
-    public void clickOnFilm(String filmName){
-        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//img[@alt='"+filmName+"']")));
-
-    }
-
+    /**
+     * Method click button which leads to user page
+     */
     public void userButtonClick(){
         workWithPageElements.clickOnElement(userButton);
     }
+
+    /**
+     * Method clicks button which lead to Navigator page
+     */
+    public void navigatorButtonClick(){workWithPageElements.clickOnElement(navigatorButton);}
 }

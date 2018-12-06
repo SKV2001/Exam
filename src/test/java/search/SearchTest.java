@@ -44,7 +44,7 @@ public class SearchTest extends ParentTest {
 
         mainPage.inputValueInSearchField(valueForSearch);
         mainPage.searchButtonClick();
-        mainPage.searchResult(searchResults);
+        searchResultPage.searchResult(searchResults);
     }
 
     @After

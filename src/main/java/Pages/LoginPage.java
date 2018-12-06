@@ -18,6 +18,9 @@ public class LoginPage extends ParentPage {
     @FindBy(id = "wp-submit")
     WebElement vhodButton;
 
+    /**
+     * Method opens Login page
+     */
     public void openLoginPage() {
         try {
             webDriver.get("https://gidonline.in/login/");
@@ -28,6 +31,9 @@ public class LoginPage extends ParentPage {
 
     }
 
+    /**
+     * Method opens login page, enters login and password on it and click button to submit this information
+     */
     public void openAndLogin (){
         openLoginPage();
         enterLogin("gidonline555");
@@ -35,17 +41,28 @@ public class LoginPage extends ParentPage {
         clickVoytiButton();
     }
 
+    /**
+     * Method enters specified login in login editbox
+     * @param login
+     */
     public void enterLogin(String login) {
 
         //workWithPageElements.enterTextInToElement(login, workWithPageElements.findElementOnPage(By.xpath("//input[@id='user_login']")));
         workWithPageElements.enterTextInToElement(login, inputLogin);
     }
 
+    /**
+     * Method enters specified password in password editbox
+     * @param password
+     */
     public void enterPassword(String password) {
         //workWithPageElements.enterTextInToElement(password, workWithPageElements.findElementOnPage(By.id("user_pass")));
         workWithPageElements.enterTextInToElement(password, inputPassword);
     }
 
+    /**
+     * Method clicks button "Войти"
+     */
     public void clickVoytiButton() {
        // workWithPageElements.clickOnElement(workWithPageElements.findElementOnPage(By.id("wp-submit")));
         workWithPageElements.clickOnElement(vhodButton);
