@@ -13,7 +13,7 @@ public class AddToFavorite extends ParentTest {
         loginPage.openAndLogin();
         profilePage.gidOnlineImageClick();
         mainPage.goToFavoriteButtonClick();
-        favoritePage.deleteFromFavorite(film);
+        favoritePage.deleteFromFavorite2(film);
 
     }
 

@@ -24,7 +24,13 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = "//span[@id='fav_button_txt']")
     WebElement goToFavoriteButton;
 
+    @FindBy(xpath = "//a[text()='Навигатор']")
+    WebElement navigatorButton;
 
+    /**
+     * Method enter text into Search editbox
+     * @param text
+     */
     public void inputValueInSearchField (String text){
         workWithPageElements.enterTextInToElement(text, searchField);
     }
@@ -36,12 +42,22 @@ public class MainPage extends ParentPage {
         workWithPageElements.clickOnElement(searchButton);
     }
 
-
+    /**
+     * Method clicks button which to Favourite page
+     */
     public void goToFavoriteButtonClick(){
         workWithPageElements.clickOnElement(goToFavoriteButton);
     }
 
+    /**
+     * Method click button which leads to user page
+     */
     public void userButtonClick(){
         workWithPageElements.clickOnElement(userButton);
     }
+
+    /**
+     * Method clicks button which lead to Navigator page
+     */
+    public void navigatorButtonClick(){workWithPageElements.clickOnElement(navigatorButton);}
 }

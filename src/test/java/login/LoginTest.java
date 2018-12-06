@@ -11,7 +11,6 @@ public class LoginTest extends ParentTest {
     @Test
     public void validLogin() {
         loginPage.openLoginPage();
-//        Thread.sleep(3000);
         loginPage.enterLogin("gidonline555");
         loginPage.enterPassword("DuyJXZ3hW7tRvc");
         loginPage.clickVoytiButton();

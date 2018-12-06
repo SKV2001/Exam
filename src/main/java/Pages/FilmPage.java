@@ -14,6 +14,9 @@ public class FilmPage extends MainPage{
     @FindBy(xpath = "//span[@id='fav_but_add']")
     WebElement addToFavoriteButton;
 
+    /**
+     * Method click button which leads to Favourite page
+     */
     public void addToFavoriteButtonClick(){
         workWithPageElements.clickOnElement(addToFavoriteButton);
     }
