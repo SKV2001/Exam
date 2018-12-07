@@ -129,6 +129,34 @@ public class WorkWithPageElements {
     }
 
     /**
+     * Method clicks on element, no matter where it located (frame0 or default frame)
+     * @param by
+     */
+    public void clickOnElement(By by) {
+        try {
+            if (isElementExist(findAndReturnElementOnPage(by))) {
+                new Actions(webdriver).moveToElement(findAndReturnElementOnPage(by)).perform();
+                findAndReturnElementOnPage(by).click();
+                logger.info(findAndReturnElementOnPage(by) + " was clicked");
+            } else {
+                try {
+                    webdriver.switchTo().frame(0);
+                    new Actions(webdriver).moveToElement(findAndReturnElementOnPage(by)).perform();
+                    findAndReturnElementOnPage(by).click();
+                    logger.info(findAndReturnElementOnPage(by) + " was clicked");
+                } catch (Exception e) {
+                    webdriver.switchTo().defaultContent();
+                    new Actions(webdriver).moveToElement(findAndReturnElementOnPage(by)).perform();
+                    findAndReturnElementOnPage(by).click();
+                    logger.info(findAndReturnElementOnPage(by) + " was clicked");
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Element couldn't be clicked because of" + e);
+        }
+
+    }
+    /**
      * Method clicks on element located in defined frame
      * @param element
      * @param frame

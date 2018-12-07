@@ -14,10 +14,11 @@ public class SortingByRating extends ParentTest {
         profilePage.gidOnlineImageClick();
     }
 
-    String actor ="Ален Делон";
-
     @Test
     public void sortingFilmsByRate(){
+
+            String actor ="Ален Делон";
+        
             filmsPage.clickOnActorsButton();
             filmsPage.selectFromActorsDropdown(actor);
             filmsPage.clickOnSortByRatingStar();

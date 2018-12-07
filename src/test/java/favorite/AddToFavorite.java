@@ -18,7 +18,7 @@ public class AddToFavorite extends ParentTest {
     }
 
     @Test
-    public void addToFavorite(){
+    public void addToFavorite() {
         favoritePage.inputValueInSearchField(film);
         favoritePage.searchButtonClick();
         searchResultPage.clickOnFilm(film);
@@ -28,10 +28,10 @@ public class AddToFavorite extends ParentTest {
     }
 
     @After
-    public void cleaningFavoriteAndLogout(){
+    public void cleaningFavoriteAndLogout() {
         favoritePage.deleteFromFavorite(film);
-    favoritePage.userButtonClick();
-    profilePage.logOutButtonClick();
+        favoritePage.userButtonClick();
+        profilePage.logOutButtonClick();
     }
 
 }

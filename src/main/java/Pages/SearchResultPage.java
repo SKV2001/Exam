@@ -26,7 +26,7 @@ public class SearchResultPage extends MainPage {
      */
 
     public void clickOnFilm(String filmName){
-        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//img[@alt='"+filmName+"']")));
+        workWithPageElements.clickOnElement(By.xpath("//img[@alt='"+filmName+"']"));
 
     }
 }

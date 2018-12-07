@@ -21,6 +21,8 @@ public class FavoritePage extends MainPage {
     @FindBy(xpath = "//div[@class = 'post favpost']")
     List<WebElement> listOfFilms;
 
+    String filmDelFromFavXpath = "//div[@class='post favpost']//span[text()='%s']//..//..//a[@class='favdel added favListItem']";
+
     /**
      * Method check if film exist in Favourite list
      * @param film
@@ -34,8 +36,8 @@ public class FavoritePage extends MainPage {
      * @param film
      */
     public void deleteFromFavorite2(String film) {
-        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//div[@class='post favpost']//span[text()='" + film + "']//..//..//a[@class='favdel added favListItem']")));
-        wait2.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='post favpost']//span[text()='\" + film + \"']//..//..//a[@class='favdel added favListItem']")));
+        workWithPageElements.clickOnElement(By.xpath(String.format(filmDelFromFavXpath,film)));
+        wait2.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(String.format(filmDelFromFavXpath,film))));
     }
 
     /**
@@ -49,7 +51,7 @@ public class FavoritePage extends MainPage {
         boolean indicator = true;
         while (count <= listOfFilms.size() && indicator) {
             if (workWithPageElements.findAndReturnElementOnPage(By.xpath("//div[@class = 'post favpost'][" + count + "]//span")).getText().equals(film)) {
-                workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("(//a[@class='favdel added favListItem'])[" + count + "]")));
+                workWithPageElements.clickOnElement(By.xpath("(//a[@class='favdel added favListItem'])[" + count + "]"));
                 wait2.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("(//a[@class='favdel added favListItem'])[" + count + "]")));
                 indicator = false;
             }
