@@ -39,9 +39,6 @@ public class SearchTest extends ParentTest {
     @Test
     public void validSearch() {
 
-//        String valueForSearch = "Судный";
-//        String[] searchResults = {"Супермен: Судный день", "Судный день", "Терминатор 2: Судный день"};
-
         mainPage.inputValueInSearchField(valueForSearch);
         mainPage.searchButtonClick();
         searchResultPage.searchResult(searchResults);

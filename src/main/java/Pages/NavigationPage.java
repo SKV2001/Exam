@@ -31,6 +31,8 @@ public class NavigationPage extends MainPage {
     @FindBy(xpath = "//input[@value='Найти фильмы']")
     WebElement findFilmsButton;
 
+    String selectFromDDXpath ="//form[@name='search']//select[%s]//option[text()='%s']";
+
     /**
      * Method click on button which opens Genre dropdown
      */
@@ -67,7 +69,6 @@ public class NavigationPage extends MainPage {
      */
     public void selectFromGenreDropdown(String genre) {
         selectFromDropDownHelper("1",genre);
-        // workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//select[@id='actors-dropdown']//option[text()='" + actor + "']")));
     }
 
     /**
@@ -98,11 +99,11 @@ public class NavigationPage extends MainPage {
 
     /**
      * Method find corresponding element and click on it
-     * @param index
-     * @param text
+     * @param index - dropdown sequence number
+     * @param text - value to select
      */
     public void selectFromDropDownHelper(String index, String text){
-        workWithPageElements.clickOnElement(workWithPageElements.findAndReturnElementOnPage(By.xpath("//form[@name='search']//select["+index+"]//option[text()='"+text+"']")));
+        workWithPageElements.clickOnElement(By.xpath(String.format(selectFromDDXpath,index,text)));
     }
 
     /**
@@ -111,6 +112,6 @@ public class NavigationPage extends MainPage {
      */
     public void checkFoundFilm(String film) {
 
-        Assert.assertEquals("Film is not found from navigator",true, workWithPageElements.isElementExist(workWithPageElements.findAndReturnElementOnPage(By.xpath("//span[text()='"+film+"']"))));
+        Assert.assertEquals("Film is not found from navigator",true, workWithPageElements.isElementExist(By.xpath("//span[text()='"+film+"']")));
     }
 }
